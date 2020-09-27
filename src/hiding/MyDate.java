@@ -10,11 +10,28 @@ public class MyDate {
     private int month;
     private int year;
 
+    private boolean isValid;
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getDay(){
+        return day;
+    }
+
     public void setDay(int day){
         this.day = day;
     }
 
     public void setMonth(int month){
+        if(month < 1 || month > 12){
+            isValid = false;
+        }
         this.month = month;
     }
 
@@ -23,6 +40,10 @@ public class MyDate {
     }
 
     public void showDate(){
-        System.out.println(year + "년 " + month + "월 "+ day + "일 입니다.");
+        if(isValid){
+            System.out.println(year + "년 " + month + "월 "+ day + "일 입니다.");
+        }else {
+            System.out.println("유효하지 않은 메서드 입니다.");
+        }
     }
 }
