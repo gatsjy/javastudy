@@ -24,6 +24,7 @@ public class MyDate {
         return day;
     }
 
+    // 자기 자신의 메모리를 가리키는 this
     public void setDay(int day){
         this.day = day;
     }

@@ -12,5 +12,10 @@ public class MyDateTest {
         date.setDay(100);
 
         date.showDate();
+
+        MyDate date2 =  new MyDate();
+
+        // 위의 setYear와 아래는 다르다..
+        date2.setYear(11);
     }
 }
