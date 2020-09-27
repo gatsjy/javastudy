@@ -11,5 +11,4 @@ public class Student {
         System.out.println("studentName = " + studentName);
         System.out.println("address = " + address);
     }
-
 }
