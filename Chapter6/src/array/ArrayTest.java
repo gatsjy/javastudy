@@ -14,5 +14,6 @@ public class ArrayTest {
         for(int i = 0 ; i < alpahbets.length; i++){
             System.out.println("alpahbets[i] = " + (int)alpahbets[i]);
         }
+
     }
 }
