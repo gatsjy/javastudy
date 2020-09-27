@@ -21,4 +21,10 @@ public class VipCustomer extends Customer {
         salesRatio = 0.01;
     }*/
 
+    // 이미 구현된 메서드를 다시 재 구현 합니다.
+    @Override
+    public int calcPrice(int price) {
+        bonusPoint += price * bonusRatio;
+        return price - (int)(price * salesRatio);
+    }
 }
