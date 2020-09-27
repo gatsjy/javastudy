@@ -1,5 +1,7 @@
 package polymorphism;
 
+import java.util.ArrayList;
+
 class Animal{
     public void move(){
         System.out.println("동물이 움직입니다.");
@@ -32,10 +34,22 @@ public class animalTest {
         Animal tAnimal = new Tiger();
         Animal eAnimal = new Eagle();
 
+        /*
         animalTest test = new animalTest();
         test.moveAnimal(hAnimal);
         test.moveAnimal(tAnimal);
         test.moveAnimal(eAnimal);
+        */
+
+        ArrayList<Animal> animalList = new ArrayList<Animal>();
+        animalList.add(hAnimal);
+        animalList.add(tAnimal);
+        animalList.add(eAnimal);
+
+        // 가상 메서드에 매칭되는 함수가 출력이 됩니다.1
+        for(Animal animal : animalList){
+            animal.move();
+        }
     }
 
     // 들어오는 것은 animal인데?? 각각 다른 메서드가 실행됩니다.
