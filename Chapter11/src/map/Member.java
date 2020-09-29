@@ -1,8 +1,6 @@
-package collection;
+package map;
 
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Vector;
 
 public class Member {
 
