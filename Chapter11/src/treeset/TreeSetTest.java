@@ -13,5 +13,6 @@ public class TreeSetTest {
         for(String tree :treeSet){
             System.out.println(tree);
         }
+
     }
 }
