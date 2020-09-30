@@ -2,6 +2,11 @@ package lambda;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+
+interface PrintString{
+    void showString(String str);
+}
 
 public class TestLambda {
 
@@ -22,5 +27,23 @@ public class TestLambda {
               .filter(s -> s.startsWith("c"))
               .map(String::toUpperCase)
               .forEach(System.out::println);
+
+        System.out.println("====================================================================");
+
+        PrintString labdaStr = s-> System.out.println(s);
+        labdaStr.showString("Test");
+
+        showMyString(labdaStr);
+
+        PrintString test = returnString();
+        test.showString("Test3");
+    }
+
+    public static void showMyString(PrintString p){
+        p.showString("Test2");
+    }
+
+    public static PrintString returnString(){
+        return s->System.out.println(s + "!!!");
     }
 }
