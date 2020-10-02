@@ -1,8 +1,6 @@
 package stream.outputstream;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FileOutputTest1 {
     public static void main(String[] args) {
@@ -14,18 +12,20 @@ public class FileOutputTest1 {
             data++;
         }
         try(FileOutputStream fos = new FileOutputStream("alpha.txt", true);
-            FileInputStream fis = new FileInputStream("alpha.txt")){
+            FileInputStream fis = new FileInputStream("alpha.txt");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            BufferedOutputStream bos = new BufferedOutputStream(fos)){
             
             // 쓰기
             fos.write(bs);
 
             int ch;
-            while( (ch = fis.read()) != -1){
+            while( (ch = bis.read()) != -1){
                 System.out.print ((char)ch);
             }
             
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e); // 시간 : 36353
         }
     }
 }
