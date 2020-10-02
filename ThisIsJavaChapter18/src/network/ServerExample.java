@@ -1,53 +1,81 @@
 package network;
 
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class ServerExample {
-    public static void main(String[] args) {
-        ServerSocket serverSocket = null;
+public class ServerExample extends Application {
+
+    // 스레드풀인 ExecutorService 필드가 선언되어있다.
+    ExecutorService executorService;
+    ServerSocket serverSocket;
+
+    // 연결된 클라이언트를 저장하는 List<Client> 타입의 connections 필드가 선언되어있다. 그리고 스레드에 안전한 Vector로 초기화했다.
+    List<Client> connections = new Vector<Client>();
+    
+    void startServer(){
+        // 서버 시작 코드
+        executorService = Executors.newFixedThreadPool(
+                Runtime.getRuntime().availableProcessors()
+        );
+
+        // ServerSocket 생성 및 포트 바인딩
         try{
             serverSocket = new ServerSocket();
-            // 포트 바인딩을 해준다.
-            serverSocket.bind(new InetSocketAddress("localhost", 5001)); // ServerSocket 생성
-            while (true){
-                System.out.println("[연결 기다림]");
-                Socket socket = serverSocket.accept();
-                // 연결된 클라이언트의 ip와 포트정보를 알고 싶다면 Socket의 getRemoteSocketAddress() 메소드를 호출하면 된다.
-                InetSocketAddress isa = (InetSocketAddress)socket.getRemoteSocketAddress();
-                System.out.println("[연결 수락함] " + isa.getHostName());
-
-                byte[] bytes = null;
-                String message = null;
-
-                InputStream is = socket.getInputStream();
-                bytes = new byte[100];
-                int readByteCount = is.read(bytes);
-                message = new String(bytes, 0, readByteCount, "UTF-8");
-                System.out.println("[데이터 받기 성공]: " + message);
-
-                OutputStream os = socket.getOutputStream();
-                message = "Hello Client";
-                bytes = message.getBytes("UTF-8");
-                os.write(bytes);
-                os.flush();
-                System.out.println("[데이터 보내기 성공]");
-
-                is.close();
-                os.close();
-                socket.close();
+            serverSocket.bind(new InetSocketAddress("localhost", 5001));
+        } catch (IOException e) {
+            if(!serverSocket.isClosed()){
+                stopServer();
             }
-        } catch (IOException e) {}
-        if(!serverSocket.isClosed()){
-            try{
-                serverSocket.close();
-            }catch (IOException e){
-
-            }
+            return;
         }
+
+/*        // 연결을 수락하는 코드
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Platform.runLater(()->{
+                    //displayText("[서버 시작]");
+                });
+            }
+        }*/
     }
+
+    void stopServer(){
+        // 데이터 통신 코드
+    }
+
+    ///////////////////////////////
+    // UI 생성 코드
+    javafx.scene.control.TextArea txtDisplay;
+    javafx.scene.control.Button btnStartStop;
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        BorderPane root = new BorderPane();
+        root.setPrefSize(500,300);
+
+        txtDisplay = new javafx.scene.control.TextArea();
+        txtDisplay.setEditable(false);
+        BorderPane.setMargin(txtDisplay, new Insets(0,0,2,0));
+
+        btnStartStop = new Button("start");
+        btnStartStop.setPrefHeight(30);
+    }
+
 }
