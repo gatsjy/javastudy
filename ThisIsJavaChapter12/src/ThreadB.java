@@ -5,13 +5,18 @@
  */
 public class ThreadB extends Thread{
 
-    public ThreadB(){
-        setName("ThreadB");
-    }
+    public boolean stop = false; // 종료 플래그
+    public boolean work = true; // 작업 진행 여부 플래그
+
     @Override
     public void run() {
-        for(int i = 0 ; i <2; i++){
-            System.out.println("getName() = " + getName());
+        while(!stop){
+            if (work){
+                System.out.println("ThreadB 작업 내용");
+            } else{
+                Thread.yield();
+            }
         }
+        System.out.println("ThreadB 종료");
     }
 }
