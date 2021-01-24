@@ -31,7 +31,7 @@ public class Customer {
     }
 
     public String showCustomerInfo(){
-        return customerID + "님의 등급은 " + customerGrade +"이고, 포인트는" + bonusPoint + "점 입니다.";
+        return customerID + "님의 등급은 " + customerGrade +"이고, 포인트는 " + bonusPoint + "점 입니다.";
     }
 
     public int getCustomerID() {

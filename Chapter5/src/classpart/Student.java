@@ -1,5 +1,9 @@
 package classpart;
 
+// 객체 (Object)
+// 의사나 행위가 미치는 대상 (사전적 의미)
+// 구체적, 추상적 데이터의 단위
+// 예) 사람, 자동차, 주문, 생산, 관리
 public class Student {
 
     public int studentId;

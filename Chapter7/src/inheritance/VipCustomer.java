@@ -9,7 +9,7 @@ public class VipCustomer extends Customer {
         super(customerID, customerName); // 명시적으로 상위클래스의 맞는 생성자를 호출해줘야 한다.
 
         customerGrade = "VIP";
-        bonusRatio = 0.05;
+        bonusRatio = 0.5;
         salesRatio = 0.01;
     }
 

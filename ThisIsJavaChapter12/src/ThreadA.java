@@ -3,21 +3,20 @@
  * @since 2020-10-09
  * realize dreams myself
  */
-// 스레드 실행 양보 예제
+// 1. 스레드 실행 양보 예제
+// 2. WorkObject의 methodA()를 실행하는 스레드
 public class ThreadA extends Thread{
+    private WorkObject workObject;
 
-    public boolean stop = false; // 종료 플래그
-    public boolean work = true; // 작업 진행 여부 플래그
-
+    public ThreadA(WorkObject workObject){
+        this.workObject = workObject; // 공유 객체를 매개값으로 받아 필드에 저장
+    }
+    
     @Override
     public void run() {
-        while(!stop){ // stop이 true가 되면 while문 종료
-            if (work){
-                System.out.println("ThreadA 작업 내용");
-            } else{
-                Thread.yield(); // work가 false가 되면 다른 스레드에게 실행 양보
-            }
+        for (int i = 0; i < 10; i++) {
+            workObject.methodA(); // 공유 객체의 methodA()를 10번 반복호출
+            System.out.println(i);
         }
-        System.out.println("ThreadA 종료");
     }
 }

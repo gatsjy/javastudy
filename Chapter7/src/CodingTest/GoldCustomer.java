@@ -12,7 +12,7 @@ public class GoldCustomer extends Customer {
         salesRatio = 0.1;
     }
 
-    public int clacPrice(int price){
+    public int calcPrice(int price){
         bonusPoint += price * bonusRatio;
         return price - (int)(price * salesRatio);
     }

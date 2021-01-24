@@ -5,18 +5,17 @@
  */
 public class ThreadB extends Thread{
 
-    public boolean stop = false; // 종료 플래그
-    public boolean work = true; // 작업 진행 여부 플래그
+    private WorkObject workObject;
+
+    public ThreadB(WorkObject workObject){
+        this.workObject = workObject; // 공유 객체를 매개값으로 받아 필드에 저장
+    }
 
     @Override
     public void run() {
-        while(!stop){
-            if (work){
-                System.out.println("ThreadB 작업 내용");
-            } else{
-                Thread.yield();
-            }
+        for (int i = 0; i < 10; i++) {
+            workObject.methodB(); // 공유 객체의 methodA()를 10번 반복호출
+            System.out.println(i);
         }
-        System.out.println("ThreadB 종료");
     }
 }

@@ -2,6 +2,7 @@ package polymorphism;
 
 import java.util.ArrayList;
 
+// 같은 Animal일 지라도 호랑이, 사람, 독수리의 움직임이 다르게 표현할 수 있다.
 class Animal{
     public void move(){
         System.out.println("동물이 움직입니다.");
@@ -58,7 +59,7 @@ public class animalTest {
         animalList.add(tAnimal);
         animalList.add(eAnimal);
 
-        if ( hAnimal instanceof Human){
+        if (hAnimal instanceof Human){
             Human human = (Human)hAnimal;
             human.readBooks();
         }
