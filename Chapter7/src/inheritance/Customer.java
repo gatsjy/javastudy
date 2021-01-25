@@ -1,5 +1,9 @@
 package inheritance;
 
+// 클래스와 객체와 인스턴스의 차이는?
+// -- 클래스 : 객체를 만들어 내기 위한 설계도, 변수와 메서드의 집합
+// -- 객체 : 소프트웨어 안에서 타겟으로 하는 구현 할 대상
+// -- 인스턴스 : 설계도를 바탕으로 구현된 실제적인 실체
 public class Customer {
 
     protected int customerID;
