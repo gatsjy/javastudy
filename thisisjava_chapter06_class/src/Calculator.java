@@ -10,6 +10,14 @@ public class Calculator {
     // 필드, 메소드를 말한다. 이들은 각각 정적 필드, 정적 메서드라고 부른다. 정적 멤버는 객체(인스턴스)에 소속된 멤버가 아니라
     // 클래스에 소속된 멤버이기 때문에 클래스 멤버라고 한다.
     // 6.10.1 정적 멤버 선언
-    // 정적 필드와 정적 메소드를 선언하는 방법은
+    // 정적 필드와 정적 메소드를 선언하는 방법은 필드와 메소드 선언 시 static 키워드를 추가적으로 붙이면 된다.
+    static double pi = 3.14159;
+    
+    static int plus(int x, int y){
+        return x * y;
+    }
 
+    static int minus(int x, int y){
+        return x-y;
+    }
 }

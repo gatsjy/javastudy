@@ -5,7 +5,7 @@
  */
 public class CarExample {
     public static void main(String[] args) {
-        Car myCar = new Car("검정", 3000);
+        Car myCar = new Car("검정", "black");
         // Car myCar = new Car(); // 기본 생성자를 만들어주지 않았기 때문에 생성할 수 없다.
 
     }
